@@ -10,15 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_16_163751) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_16_190819) do
   create_table "links", force: :cascade do |t|
     t.string "url"
     t.string "title"
     t.string "description"
     t.string "image"
-    t.integer "view_count"
+    t.integer "views_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "views", force: :cascade do |t|
+    t.integer "link_id", null: false
+    t.string "user_agent"
+    t.string "ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_views_on_link_id"
+  end
+
+  add_foreign_key "views", "links"
 end
