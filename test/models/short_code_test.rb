@@ -3,7 +3,6 @@ require "test_helper"
 class ShortCodeTest < ActiveSupport::TestCase
   test "encode 0" do
     assert_equal "0", ShortCode.encode(0)
-
   end
 
   test "encode 1" do
@@ -50,6 +49,4 @@ class ShortCodeTest < ActiveSupport::TestCase
   test "decode '4c91'" do
     assert_equal 999_999, ShortCode.decode("4c91")
   end
-
-
 end
