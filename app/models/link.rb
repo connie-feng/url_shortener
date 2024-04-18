@@ -11,9 +11,9 @@ class Link < ApplicationRecord
     MetadataJob.perform_later(to_param)
   end
 
-  # Link.find
-  def self.find(id)
-    super ShortCode.decode(id)
+  # Link.find_by_short_code(code)
+  def self.find_by_short_code(code)
+    find ShortCode.decode(code)
   end
 
   # @link.to_param
