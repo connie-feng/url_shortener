@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_04_16_190819) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "links", force: :cascade do |t|
     t.string "url"
     t.string "title"
@@ -22,7 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_16_190819) do
   end
 
   create_table "views", force: :cascade do |t|
-    t.integer "link_id", null: false
+    t.bigint "link_id", null: false
     t.string "user_agent"
     t.string "ip"
     t.datetime "created_at", null: false
